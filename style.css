@@ -1,0 +1,708 @@
+*{
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    background: darkgrey;
+    overflow-x: hidden;
+}
+
+header{
+    position: sticky;
+    top: 0; 
+    left: 0;
+    z-index: 999999;
+}
+
+.navbar{
+    width: clamp(50%, 80%, 100%);
+    margin: 20px auto;
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    gap: 20px;
+    transform: translateX(-2000px);
+    animation: drop 3s linear forwards alternate;
+}
+
+@keyframes drop{
+    10%{
+        transform: translateX(100px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+
+}
+
+.navbar .logo h1{
+    color: white;
+    animation: color-changer 1s linear infinite alternate; 
+}
+
+@keyframes color-changer{
+    10%{
+        color: goldenrod;
+    }
+    
+    50%{
+        color: white;
+    }
+
+    100%{
+        color: black;
+    }
+}
+
+.navbar ul{
+    display: flex; 
+    list-style: none;
+    position: relative; 
+}
+
+.navbar ul li{
+    padding: 0 20px;
+}
+
+.navbar ul li a{
+    text-decoration: none; 
+    color: white;
+    position: relative;
+}
+
+.navbar ul .underline a::after{
+    content: '';
+    width: 100%;
+    height: 2px; 
+    background: maroon; 
+    position: absolute; 
+    left: 0; 
+    top: 20px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease-in-out;
+}
+
+.navbar ul .underline a:hover::after{
+    transform-origin: right;
+    transform: scaleX(1);
+}
+
+button{
+    padding: 10px 20px;
+    background: black;
+    margin-left: 40px;
+    color: white; 
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+button:hover{
+    background: maroon;
+}
+
+.navbar .toggling i{
+    color: white;
+    position: relative; 
+    z-index: 1;
+    font-size: 30px; 
+    display: none;
+}
+
+.toggle-item{
+    position: relative;
+    background: rgba(255, 255, 255, 0.1); 
+    width: 100px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.toggler a{
+    text-decoration: none; 
+    color: white;
+}
+
+.toggler i{
+    width: 50%;
+    text-align: right;    
+}
+
+.toggle-item .toggle-menu{
+    width: clamp(110px, 100px, 100%);
+    height: clamp(160px, 100px, 100%);
+    padding-top: 3px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    position: absolute; 
+    left: 0px;   
+    top: 30px;
+    overflow: hidden;
+}
+
+.toggle-item ul{
+    flex-direction: column;
+}
+
+.toggle-item .toggle-menu li{
+    margin: 5px 0;
+    margin-left: -10px;
+}
+
+.toggle-item .toggle-menu li a{
+    padding: 5px 5px;
+    font-size: 12px;
+    border-radius: 5px;
+    transition: all 0.5s;
+}
+
+.toggle-item ul li a:hover{
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.active{
+    display: none;
+}
+
+.hero{
+    width: clamp(100%, 100%, 100svw);
+    height: clamp(50vh, 90vh, 100vh);;
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url(/asset/images/7880.jpg);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-wrap: wrap;
+    color: white; 
+    overflow: hidden;
+    justify-content: space-between;
+    padding: 0 50px;
+    align-items: center;
+}
+
+.hero .text{
+    transform: translateX(-500px);
+    animation: transform 1s linear forwards;
+}
+
+@keyframes transform{
+    to{
+        transform: translateX(0);
+    }
+}
+
+.hero .text h1{
+    font-size: clamp(20px, 0px, 200px);
+    opacity: 0;
+    color: darkgrey;
+    -webkit-text-stroke: 2px white;   
+    text-shadow: 5px 2px 2px black;
+    animation: display 2s linear forwards;
+}
+
+@keyframes display{
+    to{
+        opacity: 1;
+        font-size: clamp(20px, 130px, 200px);
+    }
+}
+
+.hero .text h2{
+    font-size: clamp(20px, 50px, 200px);
+}
+
+.hero .text p{
+    font-size: clamp(20px, 30px, 200px);
+}
+
+.hero .box{
+    width: clamp(50%, 50%, 100%);
+    height:  clamp(50%, 50%, 100%);
+    display: flex;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3), 
+                inset 10px 10px 10px rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    justify-content: center; 
+    align-items: center;
+    
+}
+
+
+.hero .circle{
+    width: clamp(50%, 100%, 100%);
+    height:  clamp(50%, 100%, 100%);
+    background: rgba(0, 0, 0, 0.2); 
+    clip-path: circle(100%); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    position: relative;
+    animation: fill 1s linear forwards;
+}
+
+@keyframes fill{
+    to{
+        clip-path: circle(50%);
+    }
+}
+
+.hero .circle img{
+    width: 100%;
+    position: relative; 
+    top: 250px;
+    filter: saturate(30%);
+}
+
+.hero button{
+    margin-left: 0;
+    margin-top: 10px;
+}
+
+.custom-shape-divider-bottom-1713273904 {
+    position: absolute;
+    bottom: -10.5px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1713273904 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 76px;
+}
+
+.custom-shape-divider-bottom-1713273904 .shape-fill {
+    fill: #FFFFFF;
+}
+
+.view{
+    background: black;
+    width: clamp(200px, 100svw, 100%);
+    color: white;
+    padding-top: 20px;
+}
+
+.view .top-text{
+    text-align: center;
+}
+
+.view .top-text button{
+    background: grey;
+    margin-left: 0;
+    margin-top: 10px;
+    animation: colorChanger 3s linear alternate-reverse infinite;
+}
+
+@keyframes colorChanger{
+    10%{
+        background: gold;
+    }
+    30%{
+        background: black;
+    }
+    60%{
+        background-color: goldenrod;
+    }
+    90%{
+        background: rgba(red, green, blue, 0.1);
+    }
+    100%{
+        background: darkgrey;
+    }
+}
+
+.apple-watch{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    padding: 20px 50px;
+}
+
+.apple-watch .image img{
+    width: 100%;
+}
+
+.apple-watch .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.apple-watch .image-text{
+    width: 300px;
+    margin: 0 10px;
+    border-radius: 10px;
+    background: darkgoldenrod;
+}
+
+.apple-watch .image-text .apple{
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.apple-watch .image-text img{
+    width:  100%; 
+}
+
+.apple-watch .image-text .inner-text{
+    font-size: 15px;
+    padding: 10px;
+}
+
+.apple-watch .image-text .inner-text span{
+    line-height: 30px;
+}
+
+.apple-watch .image-text .inner-text i{
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.apple-watch .image-text .inner-text button{
+    margin-left: 0;
+}
+
+.apple-watch .image-text .inner-text button a{
+    text-decoration: none; 
+    color: white;
+}
+
+.apple-watch .image-text .inner-text button i{
+    background: white; 
+    padding: 2px;
+    border-radius: 50%;
+    color: black;
+    margin: 0 5px;
+}
+
+/* .specified .click-show{
+    display: none;
+} */
+
+.apple-watch1{
+    display: flex; 
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 50px;
+}
+
+.apple-watch1 .image1 img{
+    width: 100%;
+}
+
+.apple-watch1 .container1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.apple-watch1 .image-text1{
+    width: 300px;
+    margin: 0 10px;
+    border-radius: 10px;
+    background: darkgoldenrod;
+}
+
+.apple-watch1 .image-text1 .apple1{
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.apple-watch1 .image-text1 img{
+    width:  100%; 
+}
+
+.apple-watch1 .image-text1 .inner-text1{
+    font-size: 15px;
+    padding: 10px;
+}
+
+.apple-watch1 .image-text1 .inner-text1 span{
+    line-height: 30px;
+}
+
+.apple-watch1 .image-text1 .inner-text1 i{
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.apple-watch1 .image-text1 .inner-text1 button{
+    margin-left: 0;
+}
+
+.apple-watch1 .image-text1 .inner-text1 button a{
+    text-decoration: none; 
+    color: white;
+}
+
+.apple-watch1 .image-text1 .inner-text1 button i{
+    background: white; 
+    padding: 2px;
+    border-radius: 50%;
+    color: black;
+    margin: 0 5px;
+}
+
+.custom-shape-divider-top-1713450644 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1713450644 svg {
+    position: relative;
+    display: block;
+    width: calc(162% + 1.3px);
+    height: 64px;
+}
+
+.custom-shape-divider-top-1713450644 .shape-fill {
+    fill: #FFFFFF;
+}
+
+.other-items {
+    width: clamp(100%, 100%, 100%);
+    background: black;
+    padding: 20px;
+}
+
+.other-items .descriptive-text{
+    text-align: center;
+    color: white; 
+    padding: 10px 0; 
+}
+
+.other-items .grid-wrap{
+    width: clamp(100%, 100%, 100%);
+    background: rgba(255,255,255,0.3);
+    padding: 10px 20px;
+    margin: 30px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-items: center;
+    row-gap: 10px;
+    border-radius: 10px;
+}
+
+.other-items .grid-wrap .grid-content{
+    width: clamp(200px, 300px, 100%);
+    background: white;
+    border-radius: 10px; 
+    padding: 10px;
+
+}
+
+.other-items .grid-wrap .grid-content .grid-image{
+    width: clamp(200px, 300px, 100%);
+    height: 300px;
+    border-radius: 10px;
+    margin: auto;
+    background: rgba(0,0,0,0.2);
+    display: flex; 
+    justify-content: center; 
+}
+
+.other-items .grid-wrap .grid-content .grid-image img{
+    width: 30%;
+    object-fit: cover; 
+}
+
+.other-items .grid-wrap .grid-content .grid-text{
+    padding: 20px;    
+}
+
+.other-items .grid-wrap .grid-content .grid-text button{
+    margin-left: 0;
+}
+
+@media (max-width: 920px) {
+
+    .view{
+        padding-top: 50px;
+    }
+    .hero{
+        max-width: 100%;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar ul{
+        flex-direction: column;
+        text-align: center; 
+    }
+    
+    .navbar ul li{
+        margin: 17px 0;
+    }
+
+    .navbar .links{
+        position: absolute;
+        background: black;
+        width: 100%;
+        height: 200px;
+        top: 50px;
+        justify-content: center;
+        text-align: center; 
+        border-radius: 10px;
+        transition: transform 2s ease-in;
+    }
+    
+    .navbar .toggle-this{
+        transform: translateY(-300px);
+        height: 0;
+        width: 0;
+        transition: transform 2s ease-in;
+    }
+
+    .navbar .toggling i{
+        display: block;
+    }
+    
+    .navbar button{
+        display: none;
+    }
+
+    @keyframes display{
+        to{
+            opacity: 1;
+            font-size: clamp(20px, 80px, 200px);
+        }
+    }
+
+    .hero .text h2{
+        font-size: clamp(20px, 20px, 200px);
+    }
+    
+    .hero .text p{
+        font-size: clamp(20px, 30px, 200px);
+    }
+
+    .apple-watch{
+        flex-direction: column;
+        padding: 20px 50px;
+    }
+    
+    .apple-watch .image img{
+        width: 100%;
+    }
+    
+    .apple-watch .container{
+        flex-direction: row;
+    }
+    
+    .apple-watch .image-text{
+        width: 100%;
+        margin: 10px 10px;
+        border-radius: 10px;
+        background: darkgoldenrod;
+    }
+
+    .apple-watch1{
+        flex-direction: column;
+        padding: 20px 50px;
+    }
+    
+    .apple-watch1 .image1 img{
+        width: 100%;
+    }
+    
+    .apple-watch1 .container1{
+        flex-direction: row;
+    }
+    
+    .apple-watch1 .image-text1{
+        width: 100%;
+        margin: 10px 10px;
+        border-radius: 10px;
+        background: darkgoldenrod;
+    }
+    
+}
+
+
+@media (max-width: 620px) {
+    .hero .box{
+        display: none;
+    }
+
+    @keyframes display{
+        to{
+            opacity: 1;
+            font-size: clamp(20px, 100px, 200px);
+        }
+    }
+
+    .hero .text h2{
+        font-size: clamp(20px, 30px, 200px);
+    }
+    
+    .hero .text p{
+        font-size: clamp(20px, 30px, 200px);
+    }
+
+    .apple-watch .container{
+        flex-direction: row;
+    }
+    
+    .apple-watch .image-text{
+        width: 100%;
+        margin: 10px 10px;
+        border-radius: 10px;
+        background: darkgoldenrod;
+    }
+
+    .apple-watch1 .container1{
+        flex-direction: row;
+    }
+    
+    .apple-watch1 .image-text1{
+        width: 100%;
+        margin: 10px 10px;
+        border-radius: 10px;
+        background: darkgoldenrod;
+    }
+
+    
+    
+}
+
+
+@media (max-width: 400px){
+    .apple-watch .container{
+        flex-direction: column;
+    }
+    
+    .apple-watch .image-text{
+        width: 100%;
+        margin: 10px 10px;
+        border-radius: 10px;
+        background: darkgoldenrod;
+    }
+
+    .apple-watch1 .container1{
+        flex-direction: column;
+    }
+    
+    .apple-watch .image-text1{
+        width: 100%;
+        margin: 10px 10px;
+        border-radius: 10px;
+        background: darkgoldenrod;
+    }
+}
